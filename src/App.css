@@ -1,0 +1,324 @@
+/* IMPORT GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
+}
+
+/* GLOBAL VARIABLES */
+:root {
+  --primary-color: #1a237e;
+  --accent-color: #ffd700;
+  --bg-gradient: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  --card-bg: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: #333;
+  display: flex;
+  justify-content: center;
+}
+
+.App {
+  width: 100%;
+  max-width: 1100px;
+  padding: 15px;
+  margin: 20px auto;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  background: white;
+  padding: clamp(20px, 5vw, 30px);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-bottom: 5px solid var(--accent-color);
+}
+
+.header h1 {
+  color: var(--primary-color);
+  margin: 0;
+  font-size: clamp(1.4rem, 5vw, 2.2rem);
+}
+
+.header p {
+  color: #666;
+  margin-top: 5px;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+/* MAIN FORM CARD */
+.enrollment-form {
+  background: var(--card-bg);
+  padding: clamp(15px, 5vw, 40px);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* SECTIONS */
+fieldset {
+  border: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 35px;
+  padding: clamp(15px, 4vw, 25px);
+  position: relative;
+  margin-top: 20px;
+}
+
+legend {
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  font-weight: 700;
+  color: var(--primary-color);
+  background: var(--accent-color);
+  padding: 8px 15px;
+  border-radius: 20px;
+  position: absolute;
+  top: -18px;
+  left: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* --- ADAPTIVE GRID SYSTEM --- */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: span 4;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* INPUTS */
+input:not([type="radio"]), select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: white;
+  font-family: inherit;
+}
+
+/* --- RADIO BUTTONS (COMPACT & ALIGNED) --- */
+
+/* The Row Container */
+.radio-group {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: row; /* Aligns Label + Options in one line */
+  align-items: center; /* Vertically centers text */
+  padding: 10px 0;     /* Minimal vertical spacing */
+  border-bottom: 1px solid #eee; /* Thin separator line instead of a box */
+  gap: 20px;
+  /* REMOVED: background, border, border-radius, box-shadow */
+}
+
+/* The Main Label (e.g., "Semester:") */
+.radio-group > label {
+  min-width: 280px; /* Fixed width so all options align perfectly */
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+/* The Container for the Radio Options */
+.radio-options {
+  display: flex;
+  flex-direction: row;
+  gap: 30px; /* Space between "Undergraduate" and "Graduate" */
+  align-items: center;
+}
+
+/* The Individual Option (Dot + Text) */
+.radio-options label {
+  display: flex;
+  flex-direction: row; /* STANDARD: Dot left, Text right */
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+  font-weight: 400; /* Regular weight for options */
+}
+
+/* The Actual Radio Circle */
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .radio-group {
+    flex-direction: column; /* Stack label on top of options on phone */
+    align-items: flex-start;
+    gap: 10px;
+    border-bottom: none; /* Remove separator on mobile for cleaner look */
+    background: #fff; /* Optional: Bring back card look only for mobile if needed */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+  
+  .radio-group > label {
+    min-width: auto;
+    margin-bottom: 5px;
+  }
+}
+
+/* The "Academic Level:" Heading */
+.radio-group > label {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+  min-width: 150px;
+}
+
+/* The Container for Options (Undergrad/Grad) */
+.radio-options {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* The Individual Option (Dot + Text) */
+.radio-options label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column; /* CRITICAL: Stacks Dot (Input) on TOP of Text */
+  align-items: center;    /* Centers them */
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+/* The Actual Radio Dot */
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  appearance: auto; 
+}
+
+/* ADDRESS GRID */
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 18px;
+  border: none;
+  border-radius: 50px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(26, 35, 126, 0.3);
+  background: #283593;
+}
+
+/* --- MULTI-DEVICE RESPONSIVENESS --- */
+@media (max-width: 1024px) {
+  .grid-container { grid-template-columns: repeat(2, 1fr); }
+  .form-group.full-width, .radio-group { grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  .grid-container { grid-template-columns: 1fr; }
+  .form-group.full-width, .radio-group { grid-column: span 1; }
+  .address-grid { grid-template-columns: 1fr; }
+  fieldset { padding: 20px 10px 10px 10px; }
+  legend { left: 50%; transform: translateX(-50%); }
+  
+  /* On mobile, stack the heading above the options */
+  .radio-group { flex-direction: column; align-items: flex-start; }
+}
+
+/* --- ANIMATIONS & CREATIVE SUCCESS MODAL --- */
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes drawCheck { 
+  0% { height: 0; width: 0; opacity: 1; } 
+  20% { height: 0; width: 6px; opacity: 1; } 
+  40% { height: 12px; width: 6px; opacity: 1; } 
+  100% { height: 12px; width: 6px; opacity: 1; } 
+}
+
+.fade-in-down { animation: fadeInDown 0.8s ease-out; }
+.slide-up-fade { animation: slideUpFade 0.6s ease-out; }
+
+input:focus, select:focus {
+  outline: 2px solid #1a237e !important;
+  box-shadow: 0 0 10px rgba(26, 35, 126, 0.2);
+}
+
+/* Success Modal Styles */
+.success-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center;
+  z-index: 2000; backdrop-filter: blur(5px); padding: 20px;
+}
+.success-modal {
+  background: white; padding: 40px; border-radius: 20px; text-align: center;
+  width: 100%; max-width: 400px; 
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.success-icon {
+  width: 80px; height: 80px; background: #4caf50; border-radius: 50%;
+  margin: 0 auto 20px; display: flex; justify-content: center; align-items: center;
+}
+.checkmark {
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 24px;
+  width: 12px;
+  border-bottom: 4px solid white;
+  border-right: 4px solid white;
+}
